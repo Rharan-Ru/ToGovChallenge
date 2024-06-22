@@ -32,13 +32,33 @@ export class UserRepository implements IMemoryDatabaseRepository<User> {
     }
   }
 
-  findAll(): User[] {
-    return this.users;
+  findAll(options?: Partial<User>): User[] {
+    if (!options) {
+      return this.users;
+    }
+    return this.users.filter((user) =>
+      Object.keys(options).every((key) => user[key] === options[key]),
+    );
   }
 
   findById(id: number): User | null {
     try {
       const user = this.users.find((user) => user.id === id);
+      if (!user) {
+        throw new Error('User not found');
+      }
+      return user;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  findOne(options: Partial<User>): User | null {
+    try {
+      const user = this.users.find((user) =>
+        Object.keys(options).every((key) => user[key] === options[key]),
+      );
+
       if (!user) {
         throw new Error('User not found');
       }
@@ -69,7 +89,7 @@ export class UserRepository implements IMemoryDatabaseRepository<User> {
     const updatedUser: Partial<User> = { ...user };
     delete updatedUser.id;
     updatedUser.updatedAt = new Date();
-    this.users[userIndex] = updatedUser as User;
+    this.users[userIndex] = { ...this.users[userIndex], ...updatedUser };
     return updatedUser as User;
   }
 
