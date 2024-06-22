@@ -8,18 +8,39 @@ export class TodoRepository implements IMemoryDatabaseRepository<ToDo> {
       title: 'teste',
       description: 'teste',
       status: 'pending',
+      userId: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
     },
   ];
 
-  findAll(): ToDo[] {
-    return this.todos;
+  findAll(options?: Partial<ToDo>): ToDo[] {
+    if (!options) {
+      return this.todos;
+    }
+    return this.todos.filter((todo) =>
+      Object.keys(options).every((key) => todo[key] === options[key]),
+    );
   }
 
   findById(id: number): ToDo | null {
     try {
       const todo = this.todos.find((todo) => todo.id === id);
+      if (!todo) {
+        throw new Error('ToDo not found');
+      }
+      return todo;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  findOne(options: Partial<ToDo>): ToDo | null {
+    try {
+      const todo = this.todos.find((todo) =>
+        Object.keys(options).every((key) => todo[key] === options[key]),
+      );
+
       if (!todo) {
         throw new Error('ToDo not found');
       }
@@ -35,6 +56,7 @@ export class TodoRepository implements IMemoryDatabaseRepository<ToDo> {
       title: todo.title,
       description: todo.description,
       status: todo.status,
+      userId: todo.userId,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -50,7 +72,7 @@ export class TodoRepository implements IMemoryDatabaseRepository<ToDo> {
     const updatedToDo: Partial<ToDo> = { ...todo };
     delete updatedToDo.id;
     updatedToDo.updatedAt = new Date();
-    this.todos[todoIndex] = updatedToDo as ToDo;
+    this.todos[todoIndex] = { ...this.todos[todoIndex], ...updatedToDo };
     return updatedToDo as ToDo;
   }
 

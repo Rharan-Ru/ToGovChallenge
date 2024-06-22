@@ -3,6 +3,7 @@ export class ToDo {
   title: string;
   description: string;
   status: string;
+  userId: number;
   createdAt: Date;
   updatedAt: Date;
 }
