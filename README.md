@@ -90,6 +90,10 @@ Inicie o projeto com Docker Compose:
 
     A API estará disponível em http://localhost:3000.
 
+### Como rodar os testes
+
+    npm run test
+
 Tempo Gasto
 
 Tempo total gasto: 6 horas
