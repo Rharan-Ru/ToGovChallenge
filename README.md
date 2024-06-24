@@ -1,73 +1,95 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Desafio ToGov - Sistema de Gerenciamento de Tarefas
+## Objetivo Geral
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Medir conhecimentos básicos a respeito das tecnologias utilizadas no projeto SISGP em desenvolvimento pela ToGov.
+Objetivo do Desafio
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Desenvolver um Sistema básico de Gerenciamento de Tarefas.
+Tecnologias Base
 
-## Description
+    Node.js
+    NestJS
+    React
+    Ant Design
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Requisitos do Projeto
+Backend (Node.js com NestJS)
+Endpoints RESTful
 
-## Installation
+    GET /tasks: Retorna a lista de todas as tarefas.
+    POST /tasks: Cria uma nova tarefa.
+    PUT /tasks/:id: Atualiza uma tarefa existente pelo ID.
+    DELETE /tasks/:id: Remove uma tarefa pelo ID.
 
-```bash
-$ npm install
-```
+Modelo de Dados
 
-## Running the app
+    Utilizar um array ou outra estrutura de dados em memória para armazenar as tarefas (não precisa criar um Banco de Dados).
+    Tarefa:
 
-```bash
-# development
-$ npm run start
+    json
 
-# watch mode
-$ npm run start:dev
+    {
+      "id": number,
+      "title": string,
+      "description": string,
+      "status": "pending" | "in-progress" | "completed"
+    }
 
-# production mode
-$ npm run start:prod
-```
+Autenticação
 
-## Test
+    Implementar um sistema de autenticação simples utilizando JWT.
 
-```bash
-# unit tests
-$ npm run test
+Frontend (React com Ant Design)
+Páginas
 
-# e2e tests
-$ npm run test:e2e
+    Login
+    Dashboard de tarefas
 
-# test coverage
-$ npm run test:cov
-```
+Componentes
 
-## Support
+    Formulário de cadastro de tarefas
+    Tabelas de tarefas
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Integração
 
-## Stay in touch
+    Consumir a API do backend para todas as operações de CRUD.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Design
 
-## License
+    Utilizar o Ant Design para criar os itens previstos de interface.
 
-Nest is [MIT licensed](LICENSE).
+Como Rodar o Projeto
+Pré-requisitos
+
+    Docker
+    Docker Compose
+
+Instruções
+
+    Clone o repositório:
+
+git clone https://github.com/Rharan-Ru/ToGovChallenge
+cd ToGovChallenge
+
+Crie um arquivo .env na raiz do projeto e configure as seguintes variáveis:
+
+INITIAL_USER_NAME=teste
+
+INITIAL_USER_PASSWORD=teste
+
+INITIAL_USER_EMAIL=teste@teste.com
+
+JWT_SECRET_KEY=YOUR_SECRET_KEY
+
+NODE_ENV=development
+
+Inicie o projeto com Docker Compose:
+
+
+    docker-compose up --build
+
+    A API estará disponível em http://localhost:3000.
+
+Tempo Gasto
+
+Tempo total gasto: 6 horas
