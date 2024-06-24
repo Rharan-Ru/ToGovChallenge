@@ -68,8 +68,8 @@ Instruções
 
     Clone o repositório:
 
-git clone <URL_DO_REPOSITORIO>
-cd <NOME_DO_REPOSITORIO>
+git clone https://github.com/Rharan-Ru/ToGovChallenge
+cd ToGovChallenge
 
 Crie um arquivo .env na raiz do projeto e configure as seguintes variáveis:
 
@@ -92,4 +92,4 @@ Inicie o projeto com Docker Compose:
 
 Tempo Gasto
 
-Tempo total gasto: 12 horas
+Tempo total gasto: 6 horas
