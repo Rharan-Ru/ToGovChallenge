@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { TodoRepository } from 'src/shared/database/repositories/todo.repository';
+import { TodoRepository } from '../../shared/database/repositories/todo.repository';
 
 @Injectable()
 export class ToDoService {
