@@ -1,0 +1,14 @@
+version: '3'
+services:
+  togov-backend:
+    build:
+      context: ./
+      args:
+        - NODE_ENV=${NODE_ENV}
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      SERVER_PORT: 3000
+    volumes:
+      - ./:/usr/src/app
